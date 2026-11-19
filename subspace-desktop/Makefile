@@ -88,6 +88,11 @@ release-macos-prerelease: ## Cut a download-only integration pre-release from th
 package-macos-ci: ## Build a signed release app from CI secrets, reading missing ones from Key Vault (TARGET=... VERSION=...)
 	mise run package-macos-ci -- "$(TARGET)" "$(VERSION)"
 
+.PHONY: sign-windows
+sign-windows: ## Sign Windows files or release ZIPs with Azure Artifact Signing (FILES="dist/*.zip"; needs jsign and az)
+	@test -n "$(FILES)" || { echo 'usage: make sign-windows FILES="<file.exe|file.dll|file.msi|archive.zip> ..."' >&2; exit 2; }
+	bash scripts/sign-windows.sh $(FILES)
+
 install-macos: FEATURES = terminal
 install-macos: ## Build and install the app with the terminal (FEATURES= without it, TARGET=...)
 	MISE_ENV=$(if $(findstring terminal,$(FEATURES)),terminal) SUBSPACE_BUILD_FEATURES="$(FEATURES)" mise run install-macos -- $(if $(TARGET),"$(TARGET)")
