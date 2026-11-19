@@ -1,0 +1,6 @@
+# Labels of the Subspace self-hosted ARC scale sets in runner group
+# subspace-release.
+self-hosted-runner:
+  labels:
+    - subspace-windows
+    - subspace-signing

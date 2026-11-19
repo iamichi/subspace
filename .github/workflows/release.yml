@@ -5,7 +5,8 @@
 #   project, refresh the lockfiles on their branches, and tag and release a
 #   merged one. A Framework release starts publish-framework.yml on its tag.
 #   An app release is a draft that `make release-macos` builds, attaches to
-#   and publishes from the owner's Mac.
+#   and publishes from the owner's Mac; windows-release.yml, started here,
+#   attaches its Windows archive.
 # - Nightly: also merge the Framework's release pull request, then release it
 #   in the same run, because a merge made with this workflow's token starts no
 #   other workflow run.
@@ -141,6 +142,21 @@ jobs:
             echo "Created the draft release $TAG. Publish it from the owner's Mac:"
             echo "check out $TAG in subspace-desktop/ and run \`make release-macos\`."
           } >>"$GITHUB_STEP_SUMMARY"
+      - name: Build, sign and attach the app's Windows archive
+        if: steps.release.outputs['subspace-desktop--release_created'] == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs['subspace-desktop--tag_name'] }}
+        # windows-release runs on the Subspace ARC runners, which admit only
+        # that workflow on main, and attaches the archive to the draft.
+        run: |
+          set -euo pipefail
+          case "$TAG" in
+            subspace-desktop-v*) ;;
+            *) echo "unexpected app tag: $TAG" >&2; exit 1 ;;
+          esac
+          gh workflow run windows-release.yml --repo "$GITHUB_REPOSITORY" --ref main -f tag="$TAG"
+          echo "Started windows-release for $TAG." >>"$GITHUB_STEP_SUMMARY"
       - name: Fast-forward the integration branch to main
         if: steps.release.outputs.releases_created == 'true' || steps.after-merge.outputs.releases_created == 'true'
         env:
