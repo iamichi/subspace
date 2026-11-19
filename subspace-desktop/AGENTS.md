@@ -328,14 +328,18 @@ not replace them.
   Run its Cargo and make commands from that directory.
 - Work on a repository branch and merge through pull requests; do not push or
   merge directly into `main`.
-- GitHub workflows (all on Linux runners): `.github/workflows/release.yml`
+- GitHub workflows: `.github/workflows/release.yml`
   runs Release Please on every push to `main`, nightly (when it also merges
   the Framework's release pull request) and by hand as a dry run;
   `publish-framework.yml` publishes the Framework's crates when
   `release.yml` starts it on a new `subspace-framework-v*` tag (see the
   Framework's publishing guide); `packslip.yml` signs each published desktop
-  release with packslip (see the installation guide). None of them builds or
-  tests the app: `make check` and `mise run quality` are the gate; the prek
+  release with packslip (see the installation guide); `windows-release.yml`,
+  which `release.yml` starts for each new app release, builds the Windows
+  archive on the Subspace self-hosted ARC runners (a Windows pool scaling
+  from zero), signs `subspace.exe` with Azure Artifact Signing and
+  attaches it. None of them tests the app: `make check` and
+  `mise run quality` are the gate; the prek
   pre-push hook runs both, and the root `make release-check` covers the
   release tooling.
 - Release Please's pull requests (`release-please--branches--main--components--*`)
@@ -376,6 +380,14 @@ not replace them.
   signed by that workflow. After a release, check the workflow run succeeded
   (`gh run list -R aiconsultancy/subspace -w packslip`). Sign every release
   from that one file; `gh workflow run packslip.yml -f tag=<tag>` re-signs one.
+- Creating the app release also starts `.github/workflows/windows-release.yml`,
+  which attaches `subspace-<version>-x86_64-pc-windows-msvc.zip` with an
+  Authenticode-signed `subspace.exe` and its `.sha256` file. Its sign job
+  uses the `windows-signing` environment's Azure identity and Key Vault;
+  `make sign-windows` (jsign) does the signing anywhere. Keep the signing
+  account, certificate profile and identity out of the repository; they live
+  in that environment's secrets and the Key Vault. See
+  [Sign Windows releases](docs/installation.md#sign-windows-releases).
 - `scripts/install-release.sh` and `install-release.ps1` install releases from
   `aiconsultancy/subspace`. `make package` still builds archives for Linux
   x64, macOS ARM64 and Windows x64.

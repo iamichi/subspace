@@ -178,7 +178,10 @@ workflow has Release Please rebuild it (`scripts/release-rebuild.sh`).
 3. To release the app, merge its pull request. When the release workflow has
    run, check out the new tag and run `make release-macos` on the owner's
    Mac (any shell: it moves into the desktop session itself). It attaches the
-   signed app to the draft and publishes it, which starts packslip.
+   signed app to the draft and publishes it, which starts packslip. The
+   release workflow has already started `windows-release`, which builds,
+   signs and attaches the Windows archive
+   ([Sign Windows releases](installation.md#sign-windows-releases)).
 
 Never change a version, a changelog entry or a release tag by hand. Signing,
 notarization and options such as `DRAFT=1` are in
