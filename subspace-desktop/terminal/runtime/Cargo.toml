@@ -22,7 +22,7 @@ anyhow = "1"
 # Tokens for every colour the Ghostty configuration leaves unset, and the
 # shared font-family matching (REQ-12, REQ-14). The version and features come
 # from the workspace lockfile, which this package's own lockfile must match.
-subspace-framework = { path = "../../../subspace-framework", version = "0.2.0" }
+subspace-framework = { path = "../../../subspace-framework", version = "0.3.0" }
 # The typed Ghostty values the view styles itself from (REQ-12, REQ-14 to
 # REQ-17). Zig-free, so it stays testable in the workspace as well.
 subspace-ghostty-config = { path = "../ghostty-config" }

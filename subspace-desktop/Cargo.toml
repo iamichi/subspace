@@ -27,7 +27,7 @@ license = "Apache-2.0"
 uuid = { version = "=1.29.2", features = ["v4"] }
 unicode-general-category = "=1.1.0"
 # The one Framework crate. Deleting `path` switches to crates.io.
-subspace-framework = { path = "../subspace-framework", version = "0.2.0" }
+subspace-framework = { path = "../subspace-framework", version = "0.3.0" }
 subspace-client-irc = { path = "clients/irc" }
 subspace-api-client = { path = "clients/subspace-api" }
 regex = "1"

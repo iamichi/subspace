@@ -125,7 +125,7 @@ markdown = { path = "vendor/markdown" }
 ignored = ["gpui-kit-assets"]
 
 [workspace.package]
-version = "0.2.0"
+version = "0.3.0"
 publish = true
 edition = "2024"
 # The toolchain mise pins and every check runs with.
@@ -142,33 +142,33 @@ openidconnect = { version = "4.1", default-features = false }
 # Framework crates share one version and pin each other to it. Release
 # Please's release pull request moves every pin between these markers.
 # x-release-please-start-version
-subspace-product = { path = "services/product", version = "=0.2.0" }
-subspace-core = { path = "services/core", version = "=0.2.0" }
-subspace-agent-model = { path = "services/agent-model", version = "=0.2.0" }
-subspace-agent-tools = { path = "services/agent-tools", version = "=0.2.0" }
-subspace-charts = { path = "services/charts", version = "=0.2.0" }
-subspace-contracts = { path = "services/contracts", version = "=0.2.0" }
-subspace-search = { path = "services/search", version = "=0.2.0" }
-subspace-search-onnx = { path = "services/search-onnx", version = "=0.2.0" }
-subspace-web = { path = "services/web", version = "=0.2.0" }
-subspace-github-auth = { path = "services/github-auth", version = "=0.2.0" }
-subspace-account = { path = "services/account", version = "=0.2.0" }
-subspace-auth-return = { path = "services/auth-return", version = "=0.2.0" }
-subspace-entra-auth = { path = "services/entra-auth", version = "=0.2.0" }
-subspace-workos-auth = { path = "services/workos-auth", version = "=0.2.0" }
-subspace-dashboard = { path = "board-kit/dashboard", version = "=0.2.0" }
-subspace-lucide = { path = "board-kit/lucide", version = "=0.2.0" }
-subspace-agent = { path = "runtimes/agent", version = "=0.2.0" }
-subspace-shell = { path = "host/app", version = "=0.2.0" }
-subspace-board-command = { path = "host/board-command", version = "=0.2.0" }
-subspace-chat = { path = "host/chat", version = "=0.2.0" }
-subspace-mcp = { path = "host/mcp", version = "=0.2.0" }
-subspace-report-issue = { path = "host/report-issue", version = "=0.2.0" }
-subspace-search-ui = { path = "host/search-ui", version = "=0.2.0" }
-subspace-update = { path = "host/update", version = "=0.2.0" }
-subspace-client-github = { path = "clients/github", version = "=0.2.0" }
-subspace-client-test-support = { path = "clients/test-support", version = "=0.2.0" }
-subspace-component-gallery-board = { path = "spaces/component-gallery", version = "=0.2.0" }
+subspace-product = { path = "services/product", version = "=0.3.0" }
+subspace-core = { path = "services/core", version = "=0.3.0" }
+subspace-agent-model = { path = "services/agent-model", version = "=0.3.0" }
+subspace-agent-tools = { path = "services/agent-tools", version = "=0.3.0" }
+subspace-charts = { path = "services/charts", version = "=0.3.0" }
+subspace-contracts = { path = "services/contracts", version = "=0.3.0" }
+subspace-search = { path = "services/search", version = "=0.3.0" }
+subspace-search-onnx = { path = "services/search-onnx", version = "=0.3.0" }
+subspace-web = { path = "services/web", version = "=0.3.0" }
+subspace-github-auth = { path = "services/github-auth", version = "=0.3.0" }
+subspace-account = { path = "services/account", version = "=0.3.0" }
+subspace-auth-return = { path = "services/auth-return", version = "=0.3.0" }
+subspace-entra-auth = { path = "services/entra-auth", version = "=0.3.0" }
+subspace-workos-auth = { path = "services/workos-auth", version = "=0.3.0" }
+subspace-dashboard = { path = "board-kit/dashboard", version = "=0.3.0" }
+subspace-lucide = { path = "board-kit/lucide", version = "=0.3.0" }
+subspace-agent = { path = "runtimes/agent", version = "=0.3.0" }
+subspace-shell = { path = "host/app", version = "=0.3.0" }
+subspace-board-command = { path = "host/board-command", version = "=0.3.0" }
+subspace-chat = { path = "host/chat", version = "=0.3.0" }
+subspace-mcp = { path = "host/mcp", version = "=0.3.0" }
+subspace-report-issue = { path = "host/report-issue", version = "=0.3.0" }
+subspace-search-ui = { path = "host/search-ui", version = "=0.3.0" }
+subspace-update = { path = "host/update", version = "=0.3.0" }
+subspace-client-github = { path = "clients/github", version = "=0.3.0" }
+subspace-client-test-support = { path = "clients/test-support", version = "=0.3.0" }
+subspace-component-gallery-board = { path = "spaces/component-gallery", version = "=0.3.0" }
 # x-release-please-end
 
 # GPUI Kit pins its matching GPUI snapshot, so the application lists one
